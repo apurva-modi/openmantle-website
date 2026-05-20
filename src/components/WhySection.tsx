@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const comparisons = [
   {
     them: "Pay $0.002–$0.06 per 1K tokens to a cloud provider",
-    us: "Pay flat GPU compute — ~$1–2/hr on a g4dn.xlarge",
+    us: "Pay flat GPU compute — ~$1–2/hr on a g4dn.xlarge. Cost advantage compounds at scale",
   },
   {
     them: "Black-box routing — no visibility into queue depth or backend health",
@@ -13,15 +13,15 @@ const comparisons = [
   },
   {
     them: "Vendor lock-in: swap providers, rewrite your client",
-    us: "OpenAI & Anthropic Messages API compatible. Swap the URL, keep everything else",
+    us: "OpenAI Chat Completions API + Anthropic Messages API. Swap the base URL, keep everything else",
   },
   {
-    them: "Autoscaling tied to provider's infra — you don't control the knobs",
-    us: "KEDA ScaledObject on queue depth. You set the thresholds",
+    them: "Scale is the provider's problem — you get throttled at their limits",
+    us: "KEDA scales gpu-worker on queue depth. 0 → N replicas in seconds, you set the thresholds",
   },
   {
     them: "No multi-model routing — one endpoint, one provider",
-    us: "Route by model ID across local GPUs and external providers in one cluster",
+    us: "Route by model ID across local GPUs and external providers in one cluster, at any scale",
   },
 ];
 

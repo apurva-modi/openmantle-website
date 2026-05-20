@@ -22,8 +22,8 @@ export const floors: Floor[] = [
     id: "gateway",
     depth: "01",
     title: "Gateway",
-    subtitle: "OpenAI & Anthropic Messages API compatible.",
-    body: "Drop-in replacement for the OpenAI SDK or Anthropic SDK. Keep your clients, auth, and rate limits — swap the URL.",
+    subtitle: "Chat Completions API + Messages API.",
+    body: "Drop-in for the OpenAI Chat Completions API (/v1/chat/completions) and Anthropic Messages API (/v1/messages). Keep your clients, auth, and rate limits — swap the base URL.",
     tags: ["axum", "SSE streaming", "API-key auth", "tower middleware"],
   },
   {
@@ -213,5 +213,5 @@ export const stats: Stat[] = [
   { value: "MIT", label: "licensed" },
   { value: "0", label: "vendor lock-in" },
   { value: "1 cmd", label: "to deploy" },
-  { value: "2 APIs", label: "OpenAI + Anthropic" },
+  { value: "0→N",    label: "KEDA autoscale" },
 ];

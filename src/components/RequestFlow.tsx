@@ -32,7 +32,7 @@ Content-Type: application/json
   "stream": true
 }`,
     description:
-      "Any OpenAI-compatible client — Python SDK, TypeScript, curl. Just swap the base URL. Anthropic SDK users point at /v1/messages.",
+      "OpenAI Chat Completions API (/v1/chat/completions) or Anthropic Messages API (/v1/messages). Point your existing SDK at OpenMantle — nothing else changes.",
   },
   {
     id: "gateway",

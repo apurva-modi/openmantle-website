@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 
 const stats = [
-  { value: "6",    label: "Rust Services"   },
-  { value: "~4k",  label: "Lines of Rust"   },
-  { value: "MIT",  label: "Licensed"        },
-  { value: "0",    label: "Vendor Lock-in"  },
-  { value: "1 cmd",label: "To Deploy"       },
-  { value: "2",    label: "API protocols"  },
+  { value: "6",    label: "Rust Services"     },
+  { value: "MIT",  label: "Licensed"          },
+  { value: "0",    label: "Vendor Lock-in"    },
+  { value: "1 cmd",label: "To Deploy"         },
+  { value: "0→N",  label: "KEDA Autoscale"    },
+  { value: "2",    label: "Wire Protocols"    },
 ];
 
 export function MantleCore() {
