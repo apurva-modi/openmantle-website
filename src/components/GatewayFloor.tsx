@@ -16,11 +16,11 @@ export function GatewayFloor() {
         <div className="grid md:grid-cols-2 gap-8 mt-16">
           <TiltCard className="bg-[var(--color-card)] border border-[var(--color-card-border)] rounded-xl overflow-hidden relative group h-full">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--color-card-border)] bg-black/50">
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--color-card-border)] bg-[var(--color-syntax-bg)]">
               <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
               <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-              <div className="ml-2 text-xs font-mono text-zinc-500">bash</div>
+              <div className="ml-2 text-xs font-mono text-[var(--color-muted)]">bash</div>
             </div>
             <div className="p-6 font-mono text-sm text-[var(--color-syntax-text)] overflow-x-auto h-[calc(100%-45px)] flex items-center">
               <pre>
@@ -34,15 +34,15 @@ export function GatewayFloor() {
           </TiltCard>
 
           <TiltCard className="bg-[var(--color-card)] border border-[var(--color-card-border)] rounded-xl p-8 relative overflow-hidden flex flex-col justify-center h-full min-h-[250px]">
-            <h4 className="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-8 absolute top-6 left-6">Request Pipeline</h4>
-            
+            <h4 className="text-xs font-mono text-[var(--color-muted)] uppercase tracking-widest mb-8 absolute top-6 left-6">Request Pipeline</h4>
+
             <div className="relative flex items-center justify-between mt-8">
               {/* Pipeline Line */}
-              <div className="absolute left-0 right-0 h-px bg-zinc-800 top-1/2 -translate-y-1/2"></div>
-              
+              <div className="absolute left-0 right-0 h-px bg-[var(--color-border)] top-1/2 -translate-y-1/2"></div>
+
               {/* Traveling Dot */}
-              <motion.div 
-                className="absolute left-0 w-2 h-2 bg-blue-500 rounded-full top-1/2 -translate-y-1/2 shadow-[0_0_10px_rgba(59,130,246,0.8)] z-10"
+              <motion.div
+                className="absolute left-0 w-2 h-2 bg-[var(--color-accent)] rounded-full top-1/2 -translate-y-1/2 shadow-[0_0_10px_rgba(59,130,246,0.8)] z-10"
                 animate={{ left: ["0%", "100%"] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               />
@@ -50,10 +50,10 @@ export function GatewayFloor() {
               {/* Stages */}
               {["Auth", "Rate Limit", "Route"].map((stage) => (
                 <div key={stage} className="relative z-10 flex flex-col items-center gap-3">
-                  <div className="w-4 h-4 rounded-full bg-[var(--color-card)] border-2 border-blue-500/50 flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500/50"></div>
+                  <div className="w-4 h-4 rounded-full bg-[var(--color-card)] border-2 border-[var(--color-accent)]/50 flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/50"></div>
                   </div>
-                  <span className="text-xs font-mono text-zinc-400 absolute top-8 whitespace-nowrap">{stage}</span>
+                  <span className="text-xs font-mono text-[var(--color-muted)] absolute top-8 whitespace-nowrap">{stage}</span>
                 </div>
               ))}
             </div>

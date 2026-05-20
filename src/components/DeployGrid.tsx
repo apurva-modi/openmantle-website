@@ -112,19 +112,19 @@ export function DeployGrid() {
           <div className="flex flex-col gap-4">
 
             {/* Inner tab toggle */}
-            <div className="flex items-center gap-1 bg-black/40 border border-white/5 rounded-lg p-1 self-start">
+            <div className="flex items-center gap-1 bg-[var(--color-card)] border border-[var(--color-border)] rounded-lg p-1 self-start">
               {(["helm", "models"] as const).map(t => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
                   className={`relative px-4 py-1.5 rounded-md text-xs font-mono transition-colors ${
-                    tab === t ? "text-white" : "text-zinc-500 hover:text-zinc-300"
+                    tab === t ? "text-[var(--color-foreground)]" : "text-[var(--color-muted)] hover:text-[var(--color-foreground)]"
                   }`}
                 >
                   {tab === t && (
                     <motion.div
                       layoutId="deploy-tab"
-                      className="absolute inset-0 bg-white/8 rounded-md"
+                      className="absolute inset-0 bg-[var(--color-surface)] rounded-md"
                       transition={{ type: "spring", bounce: 0.15, duration: 0.35 }}
                     />
                   )}
@@ -143,16 +143,16 @@ export function DeployGrid() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.2 }}
-                  className="rounded-xl border border-white/8 overflow-hidden"
+                  className="rounded-xl border border-[var(--color-border)] overflow-hidden bg-[var(--color-card)]"
                 >
                   {/* Cloud tabs */}
-                  <div className="flex overflow-x-auto border-b border-white/5">
+                  <div className="flex overflow-x-auto border-b border-[var(--color-border)]">
                     {clouds.map(c => (
                       <button
                         key={c.id}
                         onClick={() => setActiveCloud(c.id)}
                         className={`px-5 py-3 font-mono text-xs whitespace-nowrap transition-colors relative ${
-                          activeCloud === c.id ? "text-white" : "text-zinc-600 hover:text-zinc-300"
+                          activeCloud === c.id ? "text-[var(--color-foreground)]" : "text-[var(--color-muted)] hover:text-[var(--color-foreground)]"
                         }`}
                       >
                         {c.shortLabel}
@@ -167,23 +167,23 @@ export function DeployGrid() {
                   </div>
 
                   {/* Command */}
-                  <div className="relative group bg-black/70 p-5">
-                    <pre className="font-mono text-xs text-zinc-300 whitespace-pre-wrap leading-relaxed overflow-x-auto pr-16">
+                  <div className="relative group bg-[var(--color-syntax-bg)] p-5">
+                    <pre className="font-mono text-xs text-[var(--color-syntax-text)] whitespace-pre-wrap leading-relaxed overflow-x-auto pr-16">
                       {cloud.command}
                     </pre>
                     <button
                       onClick={copyCommand}
-                      className="absolute top-4 right-4 flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity font-mono"
+                      className="absolute top-4 right-4 flex items-center gap-1.5 bg-[var(--color-surface)] hover:bg-[var(--color-border)] text-[var(--color-foreground)] px-3 py-1.5 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity font-mono"
                     >
-                      {copied ? <FiCheck size={11} className="text-green-400" /> : <FiCopy size={11} />}
+                      {copied ? <FiCheck size={11} className="text-green-500" /> : <FiCopy size={11} />}
                       {copied ? "Copied!" : "Copy"}
                     </button>
                   </div>
 
                   {/* Note */}
-                  <div className="px-5 py-3 border-t border-white/5 flex items-start gap-2">
-                    <div className="w-1 h-1 rounded-full bg-blue-500 mt-1.5 shrink-0" />
-                    <p className="text-xs text-zinc-500 font-mono">{cloud.notes}</p>
+                  <div className="px-5 py-3 border-t border-[var(--color-border)] flex items-start gap-2">
+                    <div className="w-1 h-1 rounded-full bg-[var(--color-accent)] mt-1.5 shrink-0" />
+                    <p className="text-xs text-[var(--color-muted)] font-mono">{cloud.notes}</p>
                   </div>
                 </motion.div>
               ) : (
@@ -193,22 +193,22 @@ export function DeployGrid() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.2 }}
-                  className="rounded-xl border border-white/8 overflow-hidden"
+                  className="rounded-xl border border-[var(--color-border)] overflow-hidden bg-[var(--color-card)]"
                 >
-                  <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-black/40">
+                  <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--color-border)] bg-[var(--color-card)]">
                     <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
                     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
                     <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
-                    <span className="ml-2 text-xs font-mono text-zinc-600">config/models.toml</span>
+                    <span className="ml-2 text-xs font-mono text-[var(--color-muted)]">config/models.toml</span>
                     <button
                       onClick={copyToml}
-                      className="ml-auto flex items-center gap-1.5 text-zinc-600 hover:text-white px-2 py-1 rounded text-xs transition-colors font-mono"
+                      className="ml-auto flex items-center gap-1.5 text-[var(--color-muted)] hover:text-[var(--color-foreground)] px-2 py-1 rounded text-xs transition-colors font-mono"
                     >
-                      {copiedToml ? <FiCheck size={11} className="text-green-400" /> : <FiCopy size={11} />}
+                      {copiedToml ? <FiCheck size={11} className="text-green-500" /> : <FiCopy size={11} />}
                       {copiedToml ? "Copied" : "Copy"}
                     </button>
                   </div>
-                  <div className="bg-black/70 p-5 overflow-x-auto">
+                  <div className="bg-[var(--color-syntax-bg)] p-5 overflow-x-auto">
                     <pre className="font-mono text-xs leading-relaxed">
                       {MODELS_TOML.split("\n").map((line, i) => {
                         const isComment = line.trimStart().startsWith("#");
@@ -217,22 +217,22 @@ export function DeployGrid() {
                         return (
                           <span key={i} className="block">
                             {isComment ? (
-                              <span className="text-zinc-600">{line}</span>
+                              <span className="text-[var(--color-muted)]">{line}</span>
                             ) : isSection ? (
-                              <span className="text-orange-400/80">{line}</span>
+                              <span className="text-[var(--color-mantle-glow)]">{line}</span>
                             ) : isKey ? (
                               (() => {
                                 const [k, ...rest] = line.split("=");
                                 return (
                                   <>
-                                    <span className="text-blue-400/80">{k}</span>
-                                    <span className="text-zinc-500">=</span>
-                                    <span className="text-green-400/80">{rest.join("=")}</span>
+                                    <span className="text-[var(--color-accent)]">{k}</span>
+                                    <span className="text-[var(--color-muted)]">=</span>
+                                    <span className="text-green-500">{rest.join("=")}</span>
                                   </>
                                 );
                               })()
                             ) : (
-                              <span className="text-zinc-400">{line}</span>
+                              <span className="text-[var(--color-syntax-text)]">{line}</span>
                             )}
                           </span>
                         );
@@ -246,7 +246,7 @@ export function DeployGrid() {
 
           {/* ── Right: what ships ──────────────────────────────── */}
           <div className="flex flex-col gap-3">
-            <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-1">
+            <p className="text-[10px] font-mono text-[var(--color-muted)] uppercase tracking-widest mb-1">
               What ships
             </p>
 
@@ -258,22 +258,22 @@ export function DeployGrid() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06, duration: 0.4 }}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-card)] hover:bg-[var(--color-surface)] transition-colors"
               >
                 <div
                   className="w-1.5 h-1.5 rounded-full shrink-0"
                   style={{ backgroundColor: s.color }}
                 />
                 <div className="min-w-0">
-                  <p className="text-xs font-mono font-medium text-white">{s.name}</p>
-                  <p className="text-[10px] font-mono text-zinc-600 truncate">{s.note}</p>
+                  <p className="text-xs font-mono font-medium text-[var(--color-foreground)]">{s.name}</p>
+                  <p className="text-[10px] font-mono text-[var(--color-muted)] truncate">{s.note}</p>
                 </div>
-                <span className="ml-auto text-[10px] font-mono text-zinc-700 shrink-0">:{s.port}</span>
+                <span className="ml-auto text-[10px] font-mono text-[var(--color-muted)] shrink-0">:{s.port}</span>
               </motion.div>
             ))}
 
             {/* Divider */}
-            <div className="border-t border-white/5 my-1" />
+            <div className="border-t border-[var(--color-border)] my-1" />
 
             {/* Extras */}
             {EXTRAS.map((e, i) => (
@@ -285,10 +285,10 @@ export function DeployGrid() {
                 transition={{ delay: 0.36 + i * 0.05, duration: 0.4 }}
                 className="flex items-start gap-2 px-3 py-2"
               >
-                <span className="text-zinc-700 text-xs mt-0.5">+</span>
+                <span className="text-[var(--color-accent)] text-xs mt-0.5">+</span>
                 <div>
-                  <p className="text-[11px] font-mono text-zinc-400">{e.label}</p>
-                  <p className="text-[10px] font-mono text-zinc-700">{e.desc}</p>
+                  <p className="text-[11px] font-mono text-[var(--color-foreground)]">{e.label}</p>
+                  <p className="text-[10px] font-mono text-[var(--color-muted)]">{e.desc}</p>
                 </div>
               </motion.div>
             ))}

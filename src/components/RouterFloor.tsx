@@ -29,20 +29,20 @@ export function RouterFloor() {
           <TiltCard className="bg-[var(--color-card)] border border-[var(--color-card-border)] rounded-xl overflow-hidden relative h-[400px]">
             <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-[var(--color-card)] to-transparent z-10 pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[var(--color-card)] to-transparent z-10 pointer-events-none"></div>
-            
+
             <div className="p-6 font-mono text-xs overflow-hidden h-full">
               <div className="animate-journal flex flex-col gap-2">
                 {logEntries.map((event, i) => (
-                  <div key={i} className="flex items-center gap-4 py-2 border-b border-white/5 text-zinc-500">
+                  <div key={i} className="flex items-center gap-4 py-2 border-b border-[var(--color-border)] text-[var(--color-muted)]">
                     <span className="w-16">{event.time}</span>
-                    <span className="text-zinc-400 w-24">{event.id}</span>
+                    <span className="text-[var(--color-foreground)] opacity-60 w-24">{event.id}</span>
                     <span className={`
-                      ${event.type === 'JobCompleted' ? 'text-green-400' : ''}
-                      ${event.type === 'JobSubmitted' ? 'text-blue-400' : ''}
-                      ${event.type === 'JobAssigned' ? 'text-orange-400' : ''}
-                      ${event.type === 'TokensStreaming' ? 'text-purple-400' : ''}
+                      ${event.type === 'JobCompleted' ? 'text-green-500' : ''}
+                      ${event.type === 'JobSubmitted' ? 'text-blue-500' : ''}
+                      ${event.type === 'JobAssigned' ? 'text-orange-500' : ''}
+                      ${event.type === 'TokensStreaming' ? 'text-purple-500' : ''}
                     `}>{event.type}</span>
-                    {event.dest && <span className="ml-auto text-zinc-600">{event.dest}</span>}
+                    {event.dest && <span className="ml-auto text-[var(--color-muted)] opacity-70">{event.dest}</span>}
                   </div>
                 ))}
               </div>
@@ -50,23 +50,23 @@ export function RouterFloor() {
           </TiltCard>
 
           <TiltCard className="bg-[var(--color-card)] border border-[var(--color-card-border)] rounded-xl p-8 flex flex-col justify-center">
-            <h4 className="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-6">Topic Configuration</h4>
+            <h4 className="text-xs font-mono text-[var(--color-muted)] uppercase tracking-widest mb-6">Topic Configuration</h4>
             <div className="space-y-4 font-mono text-sm">
-              <div className="flex justify-between items-center py-3 border-b border-white/5">
-                <span className="text-zinc-400">Retention</span>
-                <span className="text-white bg-white/10 px-2 py-1 rounded">24h</span>
+              <div className="flex justify-between items-center py-3 border-b border-[var(--color-border)]">
+                <span className="text-[var(--color-muted)]">Retention</span>
+                <span className="text-[var(--color-foreground)] bg-[var(--color-surface)] px-2 py-1 rounded">24h</span>
               </div>
-              <div className="flex justify-between items-center py-3 border-b border-white/5">
-                <span className="text-zinc-400">Partitions</span>
-                <span className="text-white bg-white/10 px-2 py-1 rounded">128</span>
+              <div className="flex justify-between items-center py-3 border-b border-[var(--color-border)]">
+                <span className="text-[var(--color-muted)]">Partitions</span>
+                <span className="text-[var(--color-foreground)] bg-[var(--color-surface)] px-2 py-1 rounded">128</span>
               </div>
-              <div className="flex justify-between items-center py-3 border-b border-white/5">
-                <span className="text-zinc-400">Replication</span>
-                <span className="text-white bg-white/10 px-2 py-1 rounded">3</span>
+              <div className="flex justify-between items-center py-3 border-b border-[var(--color-border)]">
+                <span className="text-[var(--color-muted)]">Replication</span>
+                <span className="text-[var(--color-foreground)] bg-[var(--color-surface)] px-2 py-1 rounded">3</span>
               </div>
-              <div className="flex justify-between items-center py-3 border-b border-white/5">
-                <span className="text-zinc-400">Protocol</span>
-                <span className="text-blue-400 bg-blue-500/10 px-2 py-1 rounded">Kafka API</span>
+              <div className="flex justify-between items-center py-3 border-b border-[var(--color-border)]">
+                <span className="text-[var(--color-muted)]">Protocol</span>
+                <span className="text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-2 py-1 rounded">Kafka API</span>
               </div>
             </div>
           </TiltCard>

@@ -49,25 +49,25 @@ function TerminalStream() {
   }, [loop]);
 
   return (
-    <div className="w-full max-w-xl rounded-xl border border-white/8 overflow-hidden bg-black/75 backdrop-blur-sm shadow-[0_0_60px_rgba(0,0,0,0.6)]">
+    <div className="w-full max-w-xl rounded-xl border border-[var(--color-border)] overflow-hidden bg-[var(--color-syntax-bg)] backdrop-blur-sm shadow-[0_0_40px_rgba(0,0,0,0.25)]">
       {/* Titlebar */}
-      <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/5 bg-white/[0.02]">
-        <div className="w-2.5 h-2.5 rounded-full bg-red-500/55" />
-        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/55" />
-        <div className="w-2.5 h-2.5 rounded-full bg-green-500/55" />
-        <span className="ml-3 text-[10px] font-mono text-zinc-600">bash — openmantle</span>
+      <div className="flex items-center gap-1.5 px-4 py-3 border-b border-[var(--color-border)] bg-[var(--color-card)]">
+        <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+        <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+        <span className="ml-3 text-[10px] font-mono text-[var(--color-muted)]">bash — openmantle</span>
         <span className="ml-auto flex items-center gap-1.5">
           <motion.span
             className="w-1.5 h-1.5 rounded-full bg-green-500"
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
-          <span className="text-[10px] font-mono text-green-500/60">streaming</span>
+          <span className="text-[10px] font-mono text-green-500/70">streaming</span>
         </span>
       </div>
 
       {/* Output */}
-      <div className="p-5 font-mono text-xs min-h-[180px] space-y-0.5">
+      <div className="p-5 font-mono text-xs min-h-[180px] space-y-0.5 bg-[var(--color-syntax-bg)]">
         {LINES.slice(0, visible).map((line, i) =>
           line.t === "gap" ? (
             <div key={`${loop}-${i}`} className="h-2" />
@@ -78,10 +78,10 @@ function TerminalStream() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
               className={
-                line.t === "cmd"  ? "text-zinc-500" :
-                line.t === "meta" ? "text-blue-400/65" :
-                line.t === "sse"  ? "text-zinc-300" :
-                "text-green-400"
+                line.t === "cmd"  ? "text-[var(--color-muted)]" :
+                line.t === "meta" ? "text-[var(--color-accent)]/70" :
+                line.t === "sse"  ? "text-[var(--color-syntax-text)]" :
+                "text-green-500"
               }
             >
               {line.s}
@@ -90,7 +90,7 @@ function TerminalStream() {
         )}
         {/* Blinking cursor */}
         <motion.span
-          className="inline-block w-[7px] h-[13px] bg-zinc-500/60 align-middle"
+          className="inline-block w-[7px] h-[13px] bg-[var(--color-muted)]/50 align-middle"
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 1, repeat: Infinity }}
         />
@@ -167,12 +167,12 @@ export function Hero() {
 
       {/* ── Orbit rings ──────────────────────────────────────── */}
       <motion.div
-        className="absolute w-[720px] h-[720px] rounded-full border border-white/[0.025] pointer-events-none"
+        className="absolute w-[720px] h-[720px] rounded-full border border-[var(--color-foreground)]/[0.04] pointer-events-none"
         animate={{ rotate: 360 }}
         transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
       />
       <motion.div
-        className="absolute w-[520px] h-[520px] rounded-full border border-white/[0.025] pointer-events-none"
+        className="absolute w-[520px] h-[520px] rounded-full border border-[var(--color-foreground)]/[0.04] pointer-events-none"
         animate={{ rotate: -360 }}
         transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
       />

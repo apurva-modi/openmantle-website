@@ -21,25 +21,25 @@ export function SchedulerFloor() {
         
         <div className="grid md:grid-cols-3 gap-6 mt-16 relative">
           {/* Background connectors */}
-          <div className="absolute top-1/2 left-0 w-full h-px bg-zinc-800 -z-10 hidden md:block"></div>
-          
+          <div className="absolute top-1/2 left-0 w-full h-px bg-[var(--color-border)] -z-10 hidden md:block"></div>
+
           {queues.map((q, i) => (
             <TiltCard key={q.name} className="bg-[var(--color-card)] border border-[var(--color-card-border)] rounded-xl p-6 relative">
               <div className="flex justify-between items-center mb-8">
                 <h4 className={`text-sm font-mono ${q.color}`}>{q.name}</h4>
-                <div className="text-xs font-mono text-zinc-500 bg-black/50 px-2 py-1 rounded">
+                <div className="text-xs font-mono text-[var(--color-muted)] bg-[var(--color-surface)] px-2 py-1 rounded">
                   QoS Tier {i + 1}
                 </div>
               </div>
-              
+
               <div className="space-y-2 relative h-32 flex flex-col justify-end">
                 {Array.from({ length: q.items }).map((_, j) => (
-                  <motion.div 
+                  <motion.div
                     key={j}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: j * 0.2, repeat: Infinity, repeatDelay: 2, repeatType: "reverse" }}
-                    className="h-2 w-full rounded-full bg-white/5 border border-white/10 relative overflow-hidden"
+                    className="h-2 w-full rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] relative overflow-hidden"
                   >
                     <motion.div 
                       className={`absolute left-0 top-0 bottom-0 ${q.bg} w-1/4 opacity-50`}

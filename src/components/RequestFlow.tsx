@@ -251,19 +251,19 @@ export function RequestFlow() {
           </motion.h2>
 
           {/* Protocol pill toggle */}
-          <div className="inline-flex items-center rounded-full border border-white/10 p-1 bg-black/50 gap-0.5">
+          <div className="inline-flex items-center rounded-full border border-[var(--color-border)] p-1 bg-[var(--color-card)] gap-0.5">
             {(["openai", "anthropic"] as const).map(p => (
               <button
                 key={p}
                 onClick={() => setProtocol(p)}
                 className={`relative px-5 py-2 rounded-full text-sm font-mono transition-colors duration-200 ${
-                  protocol === p ? "text-black" : "text-zinc-500 hover:text-white"
+                  protocol === p ? "text-[var(--color-background)]" : "text-[var(--color-muted)] hover:text-[var(--color-foreground)]"
                 }`}
               >
                 {protocol === p && (
                   <motion.div
                     layoutId="proto-pill"
-                    className="absolute inset-0 rounded-full bg-white"
+                    className="absolute inset-0 rounded-full bg-[var(--color-foreground)]"
                     transition={{ type: "spring", bounce: 0.18, duration: 0.38 }}
                   />
                 )}
@@ -284,19 +284,19 @@ export function RequestFlow() {
               <div key={s.id} className="flex flex-col">
                 <button
                   onClick={() => pick(i)}
-                  className="group flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors hover:bg-white/5 text-left"
+                  className="group flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors hover:bg-[var(--color-surface)] text-left"
                 >
                   {/* Circle */}
                   <div
                     className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border transition-all duration-300"
                     style={{
-                      borderColor: active === i ? `${s.color}80` : "rgba(255,255,255,0.07)",
-                      backgroundColor: active === i ? `${s.color}18` : "rgba(0,0,0,0)",
+                      borderColor: active === i ? `${s.color}80` : "var(--color-border)",
+                      backgroundColor: active === i ? `${s.color}18` : "transparent",
                     }}
                   >
                     <span
                       className="text-sm leading-none transition-colors duration-300"
-                      style={{ color: active === i ? s.color : "#52525b" }}
+                      style={{ color: active === i ? s.color : "var(--color-muted)" }}
                     >
                       {s.icon}
                     </span>
@@ -306,7 +306,7 @@ export function RequestFlow() {
                   <div className="overflow-hidden">
                     <p
                       className={`text-sm font-mono font-medium truncate transition-colors ${
-                        active === i ? "text-white" : "text-zinc-500 group-hover:text-zinc-300"
+                        active === i ? "text-[var(--color-foreground)]" : "text-[var(--color-muted)] group-hover:text-[var(--color-foreground)]"
                       }`}
                     >
                       {s.label}
@@ -325,7 +325,7 @@ export function RequestFlow() {
 
                 {/* Connector line + traveling packet */}
                 {i < steps.length - 1 && (
-                  <div className="relative ml-7 w-px h-5 bg-white/5 overflow-hidden">
+                  <div className="relative ml-7 w-px h-5 bg-[var(--color-border)] overflow-hidden">
                     {active === i && playing && (
                       <motion.div
                         key={`pkt-${protocol}-${i}`}
@@ -368,33 +368,33 @@ export function RequestFlow() {
                   {step.icon}
                 </span>
                 <div className="min-w-0">
-                  <p className="font-mono text-sm font-bold text-white">{step.label}</p>
-                  <p className="font-mono text-[10px] text-zinc-500 truncate">{step.subtitle}</p>
+                  <p className="font-mono text-sm font-bold text-[var(--color-foreground)]">{step.label}</p>
+                  <p className="font-mono text-[10px] text-[var(--color-muted)] truncate">{step.subtitle}</p>
                 </div>
-                <span className="ml-auto text-[10px] font-mono text-zinc-600 shrink-0">
+                <span className="ml-auto text-[10px] font-mono text-[var(--color-muted)] shrink-0">
                   {active + 1} / {steps.length}
                 </span>
               </div>
 
               {/* Payload */}
-              <div className="p-5 bg-black/70 min-h-[200px]">
-                <pre className="font-mono text-xs text-zinc-300 whitespace-pre-wrap leading-relaxed overflow-x-auto">
+              <div className="p-5 bg-[var(--color-syntax-bg)] min-h-[200px]">
+                <pre className="font-mono text-xs text-[var(--color-syntax-text)] whitespace-pre-wrap leading-relaxed overflow-x-auto">
                   {step.payload}
                 </pre>
               </div>
 
               {/* Description */}
               <div
-                className="px-5 pt-3 border-t"
+                className="px-5 pt-3 pb-1 border-t bg-[var(--color-card)]"
                 style={{ borderColor: `${step.color}18` }}
               >
-                <p className="text-xs text-zinc-500 leading-relaxed">{step.description}</p>
+                <p className="text-xs text-[var(--color-muted)] leading-relaxed">{step.description}</p>
               </div>
 
               {/* Progress bar */}
               {playing && (
-                <div className="px-5 pt-2">
-                  <div className="h-px bg-white/5 rounded-full overflow-hidden">
+                <div className="px-5 pt-2 bg-[var(--color-card)]">
+                  <div className="h-px bg-[var(--color-border)] rounded-full overflow-hidden">
                     <motion.div
                       key={`bar-${protocol}-${active}`}
                       className="h-full rounded-full"
@@ -408,10 +408,10 @@ export function RequestFlow() {
               )}
 
               {/* Controls */}
-              <div className="px-5 py-3 flex items-center justify-between">
+              <div className="px-5 py-3 flex items-center justify-between bg-[var(--color-card)]">
                 <button
                   onClick={() => setPlaying(p => !p)}
-                  className="text-[11px] font-mono text-zinc-600 hover:text-zinc-300 transition-colors"
+                  className="text-[11px] font-mono text-[var(--color-muted)] hover:text-[var(--color-foreground)] transition-colors"
                 >
                   {playing ? "⏸ pause" : "▶ play"}
                 </button>
@@ -425,7 +425,7 @@ export function RequestFlow() {
                         style={{
                           height: 4,
                           width: active === i ? 14 : 4,
-                          backgroundColor: active === i ? step.color : "rgba(255,255,255,0.15)",
+                          backgroundColor: active === i ? step.color : "var(--color-border)",
                         }}
                       />
                     </button>
