@@ -32,7 +32,7 @@ Content-Type: application/json
   "stream": true
 }`,
     description:
-      "Any OpenAI-compatible client — Python SDK, TypeScript, curl. Just swap the base URL.",
+      "Any OpenAI-compatible client — Python SDK, TypeScript, curl. Just swap the base URL. Anthropic SDK users point at /v1/messages.",
   },
   {
     id: "gateway",

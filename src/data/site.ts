@@ -22,8 +22,8 @@ export const floors: Floor[] = [
     id: "gateway",
     depth: "01",
     title: "Gateway",
-    subtitle: "The OpenAI-compatible surface.",
-    body: "Drop-in replacement for the OpenAI SDK. Keep your clients, auth, and rate limits - swap the URL.",
+    subtitle: "OpenAI & Anthropic Messages API compatible.",
+    body: "Drop-in replacement for the OpenAI SDK or Anthropic SDK. Keep your clients, auth, and rate limits — swap the URL.",
     tags: ["axum", "SSE streaming", "API-key auth", "tower middleware"],
   },
   {
@@ -177,8 +177,8 @@ export const faqs: FaqItem[] = [
     answer: "Renting or owning GPUs becomes significantly more cost-effective at scale. Paying per token means you're paying a massive markup for the provider's infrastructure and profit margins. By running OpenMantle on your own hardware or cloud instances, you pay flat compute costs while achieving the same or better throughput, latency, and reliability."
   },
   {
-    question: "Is OpenMantle a drop-in replacement for the OpenAI API?",
-    answer: "Yes. OpenMantle exposes an OpenAI-compatible REST surface — the same /v1/chat/completions endpoint, the same SSE streaming protocol, and the same Bearer token auth. Point your existing SDK at your OpenMantle gateway URL and nothing else changes."
+    question: "Is OpenMantle a drop-in replacement for the OpenAI and Anthropic APIs?",
+    answer: "Yes. OpenMantle exposes both an OpenAI-compatible surface (/v1/chat/completions) and an Anthropic Messages API surface (/v1/messages). Point your existing SDK at your OpenMantle gateway URL and nothing else changes — same Bearer token auth, same SSE streaming protocol."
   },
   {
     question: "Do I need a GPU to try OpenMantle locally?",
@@ -213,5 +213,5 @@ export const stats: Stat[] = [
   { value: "MIT", label: "licensed" },
   { value: "0", label: "vendor lock-in" },
   { value: "1 cmd", label: "to deploy" },
-  { value: "OpenAI-compat", label: "API surface" },
+  { value: "2 APIs", label: "OpenAI + Anthropic" },
 ];

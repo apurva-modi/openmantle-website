@@ -13,7 +13,7 @@ const comparisons = [
   },
   {
     them: "Vendor lock-in: swap providers, rewrite your client",
-    us: "OpenAI-compatible surface. Swap the URL, keep everything else",
+    us: "OpenAI & Anthropic Messages API compatible. Swap the URL, keep everything else",
   },
   {
     them: "Autoscaling tied to provider's infra — you don't control the knobs",
