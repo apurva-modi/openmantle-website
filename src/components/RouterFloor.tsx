@@ -21,7 +21,7 @@ export function RouterFloor() {
   const logEntries = [...events, ...events, ...events, ...events];
 
   return (
-    <section className="py-32 px-6 border-t border-white/5 relative">
+    <section className="py-32 px-6 border-t border-[var(--color-border)] relative">
       <div className="max-w-7xl mx-auto">
         <FloorHeader floor={floor} />
         

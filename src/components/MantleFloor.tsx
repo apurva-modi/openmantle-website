@@ -10,7 +10,7 @@ export function MantleFloor() {
   const tokens = ["The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"];
 
   return (
-    <section className="py-32 px-6 border-t border-white/5 relative overflow-hidden min-h-screen flex flex-col">
+    <section className="py-32 px-6 border-t border-[var(--color-border)] relative overflow-hidden min-h-screen flex flex-col">
       <div className="max-w-7xl mx-auto w-full z-10">
         <FloorHeader floor={floor} />
       </div>

@@ -9,7 +9,7 @@ export function GatewayFloor() {
   const floor = floors.find(f => f.id === "gateway")!;
 
   return (
-    <section id="architecture" className="py-32 px-6 border-t border-white/5 relative">
+    <section id="architecture" className="py-32 px-6 border-t border-[var(--color-border)] relative">
       <div className="max-w-7xl mx-auto">
         <FloorHeader floor={floor} />
         

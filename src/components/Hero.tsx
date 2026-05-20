@@ -187,10 +187,10 @@ export function Hero() {
           initial={{ opacity: 0, y: 18, scale: 0.94 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-10 text-[10px] font-mono tracking-widest uppercase border rounded-full border-blue-500/25 text-blue-400 bg-blue-500/5 backdrop-blur-sm"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-10 text-[10px] font-mono tracking-widest uppercase border rounded-full border-[var(--color-accent)]/25 text-[var(--color-accent)] bg-[var(--color-accent)]/5 backdrop-blur-sm"
         >
           <motion.span
-            className="w-1.5 h-1.5 rounded-full bg-blue-400"
+            className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 2.5, repeat: Infinity }}
           />
@@ -202,7 +202,7 @@ export function Hero() {
           {WORDS.map((word, i) => (
             <motion.span
               key={i}
-              className="inline-block mr-[0.22em] bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/50"
+              className="inline-block mr-[0.22em] hero-word"
               initial={{ opacity: 0, y: 32, filter: "blur(8px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{
@@ -221,7 +221,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.9, ease: "easeOut" }}
-          className="text-base md:text-lg text-zinc-400 mb-10 max-w-2xl font-mono leading-relaxed"
+          className="text-base md:text-lg text-[var(--color-muted)] mb-10 max-w-2xl font-mono leading-relaxed"
         >
           {site.description}
         </motion.p>
@@ -236,7 +236,7 @@ export function Hero() {
           <MagneticButton>
             <a
               href="#deploy"
-              className="group flex items-center justify-center gap-2 bg-white text-black px-8 py-3.5 rounded-full font-bold hover:bg-zinc-100 transition-colors text-sm"
+              className="group flex items-center justify-center gap-2 bg-[var(--color-foreground)] text-[var(--color-background)] px-8 py-3.5 rounded-full font-bold hover:opacity-90 transition-opacity text-sm"
             >
               Deploy Now
               <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -248,7 +248,7 @@ export function Hero() {
               href={site.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-bold border border-white/10 hover:bg-white/5 transition-colors text-sm"
+              className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-bold border border-[var(--color-border)] text-[var(--color-foreground)] hover:bg-[var(--color-surface)] transition-colors text-sm"
             >
               <FiGithub size={14} />
               GitHub

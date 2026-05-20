@@ -15,7 +15,7 @@ export function SchedulerFloor() {
   ];
 
   return (
-    <section className="py-32 px-6 border-t border-white/5 relative overflow-hidden">
+    <section className="py-32 px-6 border-t border-[var(--color-border)] relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <FloorHeader floor={floor} />
         
