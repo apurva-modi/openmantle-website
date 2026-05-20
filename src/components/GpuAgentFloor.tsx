@@ -5,6 +5,48 @@ import { FloorHeader } from "./FloorHeader";
 import { TiltCard } from "./TiltCard";
 import { motion } from "framer-motion";
 
+const SOURCES = [
+  {
+    label: "HuggingFace Hub",
+    color: "#f59e0b",
+    dot: "bg-amber-400",
+    uri: "hf://mistralai/",
+    uriLine2: "Mistral-7B-Instruct-v0.3",
+    rows: [
+      { k: "params",  v: "7 B" },
+      { k: "dtype",   v: "bfloat16" },
+      { k: "shards",  v: "8 × safetensors" },
+      { k: "license", v: "Apache-2.0" },
+    ],
+  },
+  {
+    label: "S3 / MinIO",
+    color: "#10b981",
+    dot: "bg-emerald-400",
+    uri: "s3://acme-weights/",
+    uriLine2: "mistral-7b-acme/",
+    rows: [
+      { k: "adapter_config.json",  v: "2.1 KB" },
+      { k: "adapter_model.bin",    v: "847 MB" },
+      { k: "tokenizer.json",       v: "1.8 MB" },
+      { k: "special_tokens_map",   v: "0.4 KB" },
+    ],
+  },
+  {
+    label: "Local Path",
+    color: "#a78bfa",
+    dot: "bg-violet-400",
+    uri: "/models/mistral-7b/",
+    uriLine2: "",
+    rows: [
+      { k: "config.json",                        v: "1.2 KB" },
+      { k: "model-00001-of-00008.safetensors",   v: "4.9 GB" },
+      { k: "model-00002-of-00008.safetensors",   v: "4.9 GB" },
+      { k: "tokenizer.model",                    v: "0.5 MB" },
+    ],
+  },
+];
+
 export function GpuAgentFloor() {
   const floor = floors.find(f => f.id === "gpu-agent")!;
 
@@ -12,13 +54,38 @@ export function GpuAgentFloor() {
     <section className="py-32 px-6 border-t border-[var(--color-border)] relative">
       <div className="max-w-7xl mx-auto">
         <FloorHeader floor={floor} />
-        
+
         <div className="grid md:grid-cols-12 gap-8 mt-16 items-stretch">
-          {/* Source cards — stretch to full GPU card height */}
-          <div className="md:col-span-4 flex flex-col justify-between gap-4">
-            {["HuggingFace Hub", "S3 / MinIO", "Local Path"].map(source => (
-              <TiltCard key={source} className="bg-[var(--color-card)] border border-[var(--color-card-border)] rounded-xl p-4 text-center flex items-center justify-center flex-1">
-                <span className="text-sm font-mono text-[var(--color-muted)]">{source}</span>
+          {/* Source cards */}
+          <div className="md:col-span-4 flex flex-col gap-4">
+            {SOURCES.map((src, idx) => (
+              <TiltCard key={src.label} className="bg-[var(--color-card)] border border-[var(--color-card-border)] rounded-xl overflow-hidden flex-1">
+                {/* Card header */}
+                <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[var(--color-border)]">
+                  <motion.span
+                    className={`w-1.5 h-1.5 rounded-full ${src.dot}`}
+                    animate={{ opacity: [1, 0.4, 1] }}
+                    transition={{ duration: 2.4, repeat: Infinity, delay: idx * 0.6 }}
+                  />
+                  <span className="text-[11px] font-mono font-medium text-[var(--color-foreground)]">{src.label}</span>
+                </div>
+
+                {/* URI */}
+                <div className="px-4 pt-3 pb-1">
+                  <p className="text-[10px] font-mono leading-relaxed" style={{ color: src.color }}>
+                    {src.uri}{src.uriLine2 && <span className="text-[var(--color-muted)]">{src.uriLine2}</span>}
+                  </p>
+                </div>
+
+                {/* Key-value rows */}
+                <div className="px-4 pb-3 space-y-1">
+                  {src.rows.map(r => (
+                    <div key={r.k} className="flex justify-between items-baseline gap-2">
+                      <span className="text-[10px] font-mono text-[var(--color-muted)] truncate">{r.k}</span>
+                      <span className="text-[10px] font-mono shrink-0" style={{ color: src.color }}>{r.v}</span>
+                    </div>
+                  ))}
+                </div>
               </TiltCard>
             ))}
           </div>
