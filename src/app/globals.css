@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* Enable class-based dark mode in Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ── Light mode (default) ──────────────────────────────────────── */
+:root {
+  --color-background:  #f2f2f8;
+  --color-foreground:  #0d0d1c;
+  --color-card:        #ffffff;
+  --color-card-border: #dcdcee;
+  --color-accent:      #2563eb;
+  --color-mantle-glow: #ea580c;
+  --color-syntax-bg:   #f0f0f8;
+  --color-syntax-text: #4b5568;
+  --color-muted:       #6b7280;
+  --color-surface:     #e8e8f4;
+  --grid-color:        rgba(0, 0, 0, 0.04);
+  --orb-blue:          rgba(37, 99, 235, 0.10);
+  --orb-orange:        rgba(234, 88, 12, 0.08);
+  --orb-purple:        rgba(109, 40, 217, 0.06);
+  --color-border:      rgba(0, 0, 0, 0.08);
+  --nav-bg:            rgba(255, 255, 255, 0.80);
+}
+
+/* ── Dark mode ─────────────────────────────────────────────────── */
+.dark {
+  --color-background:  #080c18;
+  --color-foreground:  #e8eaf4;
+  --color-card:        #0e1428;
+  --color-card-border: #1c2540;
+  --color-accent:      #3b82f6;
+  --color-mantle-glow: #f97316;
+  --color-syntax-bg:   #06080f;
+  --color-syntax-text: #8892aa;
+  --color-muted:       #6b7280;
+  --color-surface:     #131929;
+  --grid-color:        rgba(255, 255, 255, 0.025);
+  --orb-blue:          rgba(59, 130, 246, 0.10);
+  --orb-orange:        rgba(249, 115, 22, 0.09);
+  --orb-purple:        rgba(168, 85, 247, 0.06);
+  --color-border:      rgba(255, 255, 255, 0.05);
+  --nav-bg:            rgba(8, 12, 24, 0.80);
+}
+
+/* ── Base ──────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    background-image:
+      radial-gradient(circle at 15% 50%, var(--orb-blue)   0%, transparent 50%),
+      radial-gradient(circle at 85% 30%, var(--orb-orange)  0%, transparent 50%),
+      radial-gradient(circle at 50% 80%, var(--orb-purple)  0%, transparent 50%),
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    background-attachment: fixed;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* ── Utilities ─────────────────────────────────────────────────── */
+@layer utilities {
+  .glow-accent  { box-shadow: 0 0 20px rgba(59, 130, 246, 0.15); }
+  .glow-mantle  { box-shadow: 0 0 30px rgba(249, 115, 22, 0.2);  }
+
+  .theme-section {
+    background-color: var(--color-surface);
+    transition: background-color 0.3s ease;
+  }
+  .theme-card {
+    background-color: var(--color-card);
+    border-color: var(--color-card-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  .theme-text-muted { color: var(--color-muted); }
+
+  .animate-soft-pulse {
+    animation: soft-pulse 3s ease-in-out infinite alternate;
+  }
+  .animate-journal {
+    animation: journal-scroll 20s linear infinite;
+  }
+}
+
+@keyframes soft-pulse {
+  0%   { opacity: 0.8; transform: scale(1);    }
+  100% { opacity: 1;   transform: scale(1.02); }
+}
+
+@keyframes journal-scroll {
+  0%   { transform: translateY(0);   }
+  100% { transform: translateY(-50%);}
+}
+
+/* Hide scrollbar but allow scrolling */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

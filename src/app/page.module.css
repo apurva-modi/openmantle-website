@@ -1,0 +1,310 @@
+.main {
+  position: relative;
+  width: 100%;
+}
+
+/* Grid Layouts for Floors */
+.twoColGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  position: relative;
+  z-index: 1;
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+/* Floor 02 Log Panel */
+.logHeader {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-main);
+  margin-bottom: 24px;
+}
+
+.statusDot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  margin-right: 8px;
+}
+
+.logLine {
+  display: flex;
+  gap: 24px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  margin-bottom: 12px;
+}
+
+.logEvent {
+  width: 140px;
+  flex-shrink: 0;
+}
+
+.logProps {
+  color: var(--text-main);
+}
+
+.logPills {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.logPill {
+  background: rgba(255,255,255,0.05);
+  padding: 4px 12px;
+  border-radius: 12px;
+  color: var(--text-main);
+}
+
+.pillArrow {
+  color: var(--text-muted);
+}
+
+/* Floor 02 Tech Panel */
+.techList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.techItem {
+  border-bottom: 1px solid var(--panel-border);
+  padding-bottom: 32px;
+}
+
+.techItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.techLabel {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.techValue {
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+/* Floor 03 Queues */
+.queueSectionHeader {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 32px;
+}
+
+.queueTier {
+  margin-bottom: 48px;
+}
+
+.tierHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.tierPills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.backendNode {
+  margin-bottom: 48px;
+}
+
+.backendHeader {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.slots {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.slot {
+  flex: 1;
+  height: 20px;
+  background: var(--accent-cyan-faded);
+  border-radius: 2px;
+}
+
+.slot.empty {
+  background: transparent;
+  border: 1px solid var(--panel-border);
+}
+
+.backendStatus {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.bottomNote {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-main);
+  margin-top: 64px;
+}
+
+/* Floor 04 Weights */
+.weightSource {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.weightSource:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: var(--panel-border);
+}
+
+.weightIcon {
+  font-size: 1.2rem;
+}
+
+.weightTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.weightDesc {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.agentPanel {
+  background: rgba(22, 27, 34, 0.4);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 32px;
+}
+
+.agentHeader {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+}
+
+.agentSubheader {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin-bottom: 32px;
+}
+
+.phaseGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.phaseBox {
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.phaseBoxHeader {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.phaseBoxDesc {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Hero Section */
+.heroSection {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid var(--panel-border);
+  overflow: hidden;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.canvasContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  margin-top: 80px;
+}
+
+.heroTitle {
+  font-size: 5rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.heroDesc {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
