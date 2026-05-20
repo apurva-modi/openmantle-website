@@ -13,20 +13,33 @@ export function GpuAgentFloor() {
       <div className="max-w-7xl mx-auto">
         <FloorHeader floor={floor} />
         
-        <div className="grid md:grid-cols-12 gap-8 mt-16 items-center">
-          <div className="md:col-span-4 space-y-4">
+        <div className="grid md:grid-cols-12 gap-8 mt-16 items-stretch">
+          {/* Source cards — stretch to full GPU card height */}
+          <div className="md:col-span-4 flex flex-col justify-between gap-4">
             {["HuggingFace Hub", "S3 / MinIO", "Local Path"].map(source => (
-              <TiltCard key={source} className="bg-[var(--color-card)] border border-[var(--color-card-border)] rounded-xl p-4 text-center">
+              <TiltCard key={source} className="bg-[var(--color-card)] border border-[var(--color-card-border)] rounded-xl p-4 text-center flex items-center justify-center flex-1">
                 <span className="text-sm font-mono text-[var(--color-muted)]">{source}</span>
               </TiltCard>
             ))}
           </div>
 
-          <div className="md:col-span-1 hidden md:flex justify-center relative h-full">
-            <svg width="40" height="200" style={{ color: "var(--color-border)" }}>
-              <path d="M 0 20 C 20 20, 20 100, 40 100" fill="none" stroke="currentColor" strokeWidth="2" />
-              <path d="M 0 100 L 40 100" fill="none" stroke="currentColor" strokeWidth="2" />
-              <path d="M 0 180 C 20 180, 20 100, 40 100" fill="none" stroke="currentColor" strokeWidth="2" />
+          {/* Connector — percentage-based so arrows always align with cards */}
+          <div className="md:col-span-1 hidden md:block relative">
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 60 100"
+              preserveAspectRatio="none"
+              style={{ color: "var(--color-border)", overflow: "visible" }}
+            >
+              {/* Top card → center */}
+              <path d="M 0,17 C 30,17 30,50 60,50" fill="none" stroke="currentColor" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+              {/* Middle card → center */}
+              <path d="M 0,50 L 60,50" fill="none" stroke="currentColor" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+              {/* Bottom card → center */}
+              <path d="M 0,83 C 30,83 30,50 60,50" fill="none" stroke="currentColor" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+              {/* Arrowhead */}
+              <polyline points="53,46 60,50 53,54" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
             </svg>
           </div>
 

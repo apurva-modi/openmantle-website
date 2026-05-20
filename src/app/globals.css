@@ -33,7 +33,7 @@
   --color-background:  #080c18;
   --color-foreground:  #e8eaf4;
   --color-card:        #0e1428;
-  --color-card-border: #1c2540;
+  --color-card-border: #263060;
   --color-accent:      #3b82f6;
   --color-mantle-glow: #f97316;
   --color-syntax-bg:   #06080f;
@@ -44,8 +44,8 @@
   --orb-blue:          rgba(59, 130, 246, 0.10);
   --orb-orange:        rgba(249, 115, 22, 0.09);
   --orb-purple:        rgba(168, 85, 247, 0.06);
-  --color-border:      rgba(255, 255, 255, 0.05);
-  --nav-bg:            rgba(8, 12, 24, 0.80);
+  --color-border:      rgba(255, 255, 255, 0.10);
+  --nav-bg:            rgba(8, 12, 24, 0.85);
 }
 
 /* ── Base ──────────────────────────────────────────────────────── */
