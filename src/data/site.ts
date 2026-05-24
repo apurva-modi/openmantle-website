@@ -3,8 +3,8 @@ export const site = {
   tagline: "The inference layer cloud providers charge you to reach.",
   description:
     "Open-source, cloud-neutral LLM inference platform. Event-sourced routing, QoS-aware scheduling, GPU fleet management - deployable to any Kubernetes cluster.",
-  repoUrl: "https://github.com/apurva-modi/openmantle",
-  docsUrl: "https://github.com/apurva-modi/openmantle#readme",
+  repoUrl: "https://github.com/openmantlehq/openmantle",
+  docsUrl: "https://github.com/openmantlehq/openmantle#readme",
   discordUrl: "#",
 };
 

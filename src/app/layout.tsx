@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "Bedrock alternative",
     "OpenMantle",
   ],
-  authors: [{ name: "OpenMantle", url: "https://github.com/apurva-modi/openmantle" }],
+  authors: [{ name: "OpenMantle", url: "https://github.com/openmantlehq/openmantle" }],
   robots: {
     index: true,
     follow: true,
